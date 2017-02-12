@@ -8,5 +8,16 @@
     <artifactId>light-auth</artifactId>
     <version>0.1</version>
 
+    <properties>
+        <spring.version>4.3.6.RELEASE</spring.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
