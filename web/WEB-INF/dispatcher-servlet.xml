@@ -9,6 +9,8 @@
 
     <context:component-scan base-package="dobrovolsky"/>
     <mvc:annotation-driven/>
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <mvc:resources mapping="/application/**" location="/application/"/>
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
