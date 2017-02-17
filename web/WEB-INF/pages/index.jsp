@@ -4,7 +4,7 @@
 <head>
     <meta charset=utf-8/>
     <title>Light Auth</title>
-    <link rel="stylesheet" href="/resources/css/application.css">
+    <link rel="stylesheet" href="/lightauth/resources/css/application.css">
 </head>
 <body>
     <script type="text/javascript"

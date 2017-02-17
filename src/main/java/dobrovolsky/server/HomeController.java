@@ -9,6 +9,7 @@ import dobrovolsky.server.service.UserService;
 import dobrovolsky.shared.UserDto;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -41,9 +42,20 @@ public class HomeController {
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
     public @ResponseBody ResponseEntity<String> auth(@RequestBody Credentials credentials) {
+        User user = userService.findByLogin(credentials.getLogin());
+        if (user != null) {
+            boolean passwordCorrect = user.getPassword().equals(credentials.getPass());
+            if (passwordCorrect) {
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty("token", user.getToken());
+                return ResponseEntity.ok(jsonObject.toString());
+            }
+        }
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("token", credentials.getLogin() + " " + credentials.getPass());
-        return ResponseEntity.ok(jsonObject.toString());
+        jsonObject.addProperty("message", "Failed to log in. Check your password.");
+        return ResponseEntity
+                .status(HttpStatus.UNAUTHORIZED)
+                .body(jsonObject.toString());
     }
 
     @RequestMapping(

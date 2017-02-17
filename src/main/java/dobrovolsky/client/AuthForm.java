@@ -12,7 +12,7 @@ import com.google.gwt.user.client.ui.*;
 
 public class AuthForm extends Composite implements ClickHandler {
 
-    private static final String ENDPOINT = "http://localhost:8080";
+    private static final String ENDPOINT = "http://localhost:8080/lightauth";
     private static final String AUTH_METHOD = "/auth";
 
     private final PasswordTextBox passwordTextBox = new PasswordTextBox();
@@ -37,7 +37,6 @@ public class AuthForm extends Composite implements ClickHandler {
 
         initWidget(formPanel);
     }
-
 
     @Override
     public void onClick(ClickEvent event) {

@@ -50,4 +50,10 @@ public class UserServiceImpl implements UserService {
         }
         return users;
     }
+
+    @Override
+    public User findByLogin(String login) {
+        Objects.requireNonNull(login);
+        return repository.findByLogin(login);
+    }
 }
