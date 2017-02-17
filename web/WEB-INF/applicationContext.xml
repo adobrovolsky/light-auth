@@ -23,13 +23,6 @@
         </property>
     </bean>
 
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="${connection.driver_class}" />
-        <property name="url" value="${connection.url}" />
-        <property name="username" value="${connection.username}" />
-        <property name="password" value="${connection.password}" />
-    </bean>
-
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
@@ -45,6 +38,27 @@
     <bean id="jsonConverter"
           class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         <property name="supportedMediaTypes" value="application/json" />
+    </bean>
+
+    <!-- HikariCP configuration -->
+    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+        <property name="poolName" value="springHikariCP" />
+        <property name="connectionTestQuery" value="${hikari.connectionTestQuery}" />
+        <property name="dataSourceClassName" value="${hikari.dataSourceClassName}" />
+        <property name="maximumPoolSize" value="${hikari.maximumPoolSize}" />
+        <property name="idleTimeout" value="${hikari.idleTimeout}" />
+
+        <property name="dataSourceProperties">
+            <props>
+                <prop key="url">${connection.url}</prop>
+                <prop key="user">${connection.username}</prop>
+                <prop key="password">${connection.password}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <constructor-arg ref="hikariConfig" />
     </bean>
 
 </beans>
