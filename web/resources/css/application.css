@@ -1,7 +1,29 @@
-body {
-    background-color: white;
-    color: black;
-    font-family: Arial, sans-serif;
-    font-size: small;
-    margin: 8px;
+#login-form {
+    padding: 20px;
+    background-color: azure;
+    width: 300px;
+    height:200px;
+    margin: 0 auto;
+    border: 1px solid aquamarine;
+    color: #666366;
+}
+
+#login-form .input {
+    width: 260px;
+    font-size: 20px;
+    margin-top: 20px;
+    color: inherit;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#login-form button {
+    width: 50%;
+    height: 30px;
+    margin-top: 20px;
+    color: inherit;
+}
+
+#login-form .form-header {
+    font-size: x-large;
 }

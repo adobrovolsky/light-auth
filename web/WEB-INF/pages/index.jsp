@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="/resources/css/application.css">
 </head>
 <body>
-<script type="text/javascript" language="javascript"
-        src="application/dobrovolsky.Application.nocache.js"></script>
-<h2>${message}</h2>
+    <script type="text/javascript"
+            language="javascript"
+            src="application/rpc.nocache.js"></script>
+    <div id="login-form"></div>
 </body>
 </html>
